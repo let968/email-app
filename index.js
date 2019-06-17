@@ -6,14 +6,16 @@ const keys = require('./config/keys');
 require('./models/user');
 require('./services/passport');
 
-mongoose.connect(keys.mongoURI, { useNewUrlParser: true });
+mongoose.connect(`mongodb+srv://${ keys.mongo.username }:${ keys.mongo.password }@nodetodo-lbwsd.mongodb.net/${ process.env.DATABASE || 'emaily-dev' }?retryWrites=true&w=majority`, { useNewUrlParser: true });
+
+console.log(process.env);
 
 const app = express();
 
 app.use(
     cookieSession({
         maxAge: 30 * 24 * 60 * 60 * 1000,
-        keys: [keys.cookieKey]
+        keys: [ keys.cookieKey ]
     })
 );
 
