@@ -8,8 +8,6 @@ require('./services/passport');
 
 mongoose.connect(`mongodb+srv://${ keys.mongo.username }:${ keys.mongo.password }@nodetodo-lbwsd.mongodb.net/${ process.env.DATABASE || 'emaily-dev' }?retryWrites=true&w=majority`, { useNewUrlParser: true });
 
-console.log(process.env.PORT);
-
 const app = express();
 
 app.use(
